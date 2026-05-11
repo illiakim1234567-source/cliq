@@ -23,3 +23,13 @@ def register():
 
     with open("data.json", "w", encoding="utf-8") as f:
         json.dump(data, f, ensure_ascii=False, indent=4)
+
+
+if data["nickname"] != "":
+    password = input("Enter your password: ")
+
+    while data["password"] != password:
+        print("Password is incorrect!")
+        password = input("Enter your password: ")
+
+    print("Login completed.")
