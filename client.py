@@ -1,0 +1,3 @@
+import socket
+
+nickname = input()

@@ -9,5 +9,5 @@ port = int(input('Enter server port: '))
 server.bind((server_address, int(port)))
 
 server.listen()
-print("Listening on " + server_address)
+
 print(f"Listening on {server_address}")
