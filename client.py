@@ -1,6 +1,8 @@
 import socket
 import json
 
+client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+
 with open("data.json", "r") as f:
     data = json.load(f)
 
@@ -33,3 +35,27 @@ if data["nickname"] != "":
         password = input("Enter your password: ")
 
     print("Login completed.")
+
+else:
+    register()
+
+connected = False
+ip = ""
+port = ""
+
+while not connected:
+    ip = input("Enter server IP: ")
+    port = input("Enter server port: ")
+
+    try:
+        client.connect((ip, int(port)))
+        connected = True
+        print("Connected successfully.")
+
+    except ValueError:
+        print("Port must be a number!")
+        continue
+
+    except (socket.gaierror, ConnectionRefusedError):
+        print("Cannot connect to the server!")
+        continue
